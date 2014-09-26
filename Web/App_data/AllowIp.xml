@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+  <allowip>
+    <pool>
+      <begin>127.0.0.3</begin>
+      <end>127.0.0.255</end>
+    </pool>
+    <pool>
+      <begin>192.168.0.1</begin>
+      <end>192.255.255.255</end> 
+    </pool>
+    <pool>
+      <begin>210.29.192.1</begin>
+      <end>210.29.207.255</end>
+    </pool>
+  </allowip>
+  

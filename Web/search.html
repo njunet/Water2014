@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+function CheckKeywords()
+{
+	var keywords=document.getElementById("keywords");
+	if(keywords.value!="" && keywords.value.length<12)
+	{
+		//alert(keywords.value.length)
+		return true;}
+
+	else
+	{
+		keywords.focus();
+		return false;		
+		}
+	
+	}
+
+</script>
+</head>
+
+<body style="margin: 0px">
+ <form action="search.aspx" target="_blank" method="post">
+        <table width="155" border="0" align="center" cellpadding="0" cellspacing="4">
+          <tr>
+            <td height="23" colspan="2"><input name="textfield" type="text" class="index_right_search_input" id="keywords"  title="请输入关键字，字符长度不能超过12个字符，日期格式如:2010-02-25"/></td>
+            </tr>
+          <tr>
+            <td width="146" height="23">
+            <select name="select" id="searchtype">
+              <option value="1">按标题搜索</option>
+              <option value="2">按全文搜索</option>
+              <option value="3">按日期搜索</option>
+            </select>            </td>
+            <td width="54" height="23"><input type="image" name="imageField2" id="imageField2" src="images/search_button.jpg" onclick="return CheckKeywords()"  title="请输入关键字，字符长度不能超过12个字符，日期格式如:2010-02-25" /></td>
+          </tr>
+        </table>
+        </form>
+</body>
+</html>

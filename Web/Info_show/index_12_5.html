@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>江苏省太湖流域主要水污染物总量动态监控和评估示范平台</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+}
+-->
+</style>
+<link href="images/css.css" rel="stylesheet" type="text/css" />
+<LINK href="css/css.css"rel=stylesheet>
+<script type="text/javascript" src="js/flv.js"></script>
+<SCRIPT src="js/taobao.js"></SCRIPT>
+<script src="js/jquery.min.js"></script>
+<script>
+$(function(){
+	function layout(){
+		$(".main,.main_left,.main_middle,.main_right,#map,.right1").height($(window).height()-93);
+		}
+	$(window).load(layout).resize(layout);
+	$(".point").click(function(){
+		$(".pointBox").show().find(".close").click(function(){
+			$(this).parents(".pointBox").hide();
+			})
+		})
+	$("#main_middle").click(function(){
+		$("#main_left").toggle();
+		$("#tool1").toggleClass("tool1");
+		$(".main_right").toggleClass("open");
+		})
+	})
+</script>
+<style type="text/css">
+.balck12px001 {font-size:12px; color:#000000; text-decoration:none; font-family:"宋体";}
+</style>
+</head>
+
+<body>
+ <div class="head">
+   <div align="left" class="head_left"><img src="images/logo.jpg" /></div>
+   <div align="right" class="head_right">版权所有：江苏省环境监测中心  南京大学</div>
+ </div>
+ <div class="nav">
+   <div class="nav_right">
+<SCRIPT type=text/javascript>
+	TB.Header.init();
+</SCRIPT>
+  </div>
+ </div>
+ <div class="main">
+  <div class="main_left" id="main_left">
+    <div align="right">
+      <table width="214" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <!--<td height="40" align="center" background="images/main_left_bg.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">-->
+          <td height="40" align="center" background="images/pic7.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="24%" align="center"><img src="images/pic9.jpg" width="14" height="13" /></td>
+              <td width="76%" align="left" class="balck12px001" onclick="redirect(38)"><a href="#">总量排放核定</a></td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td><img src="images/pic6.jpg" width="214" height="2" /></td>
+        </tr>
+        <tr>
+          <td height="41" align="center" background="images/pic7.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="24%" align="center"><img src="images/pic10.jpg" width="10" height="14" /></td>
+              <td width="76%" align="left" class="balck12px001" onclick="redirect(39)"><a href="#">减排动态评估</a></td>
+            </tr> 
+          </table></td>
+        </tr>
+        <!--<tr>
+          <td height="70" align="center" background="images/pic8.jpg"><table width="80%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="23%" height="30" align="center"><img src="images/pic15.jpg" width="10" height="10" /></td>
+              <td width="77%" align="left" class="balck12px001"><a href="#">交通态势时空图</a></td>
+            </tr>
+            <tr>
+              <td height="30" align="center"><img src="images/pic15.jpg" width="10" height="10" /></td>
+              <td align="left" class="balck12px001"><a href="#">速度流量分布图</a></td>
+            </tr>
+          </table></td>
+        </tr>-->
+        <tr>
+          <td><img src="images/pic6.jpg" width="214" height="2" /></td>
+        </tr>
+        <tr>
+          <td height="41" align="center" background="images/pic7.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="24%" align="center"><img src="images/pic11.jpg" width="14" height="16" /></td>
+              <td width="76%" align="left" class="balck12px001" onclick="redirect(40)"><a href="#">减排绩效评估</a></td>
+            </tr>
+          </table></td>
+        </tr>
+        <!--<tr>
+          <td height="70" align="center" background="images/pic8.jpg"><table width="80%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="23%" height="30" align="center"><img src="images/pic15.jpg" width="10" height="10" /></td>
+              <td width="77%" align="left" class="balck12px001"><a href="#">异常事件预警</a></td>
+            </tr>
+            <tr>
+              <td height="30" align="center"><img src="images/pic15.jpg" width="10" height="10" /></td>
+              <td align="left" class="balck12px001"><a href="#">天气灾害预警</a></td>
+            </tr>
+          </table></td>
+        </tr>-->
+        <tr>
+          <td><img src="images/pic6.jpg" width="214" height="2" /></td>
+        </tr>
+        <tr>
+          <td height="41" align="center" background="images/pic7.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="24%" align="center"><img src="images/pic12.jpg" width="16" height="13" /></td>
+              <td width="76%" align="left" class="balck12px001" onclick="redirect(41)"><a href="#">基础数据库</a></td>
+            </tr>
+          </table></td>
+        </tr>
+        <!--<tr>
+          <td height="90" align="center" background="images/pic8.jpg"><table width="70%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="60" align="center"><img src="images/pic16.jpg" width="53" height="53" /></td>
+              <td align="center"><img src="images/pic17.jpg" width="53" height="53" /></td>
+            </tr>
+            <tr>
+              <td height="20" align="center" class="balck12px001"><a href="#">排障现场</a></td>
+              <td align="center" class="balck12px001"><a href="#">应急发布</a></td>
+            </tr>
+          </table></td>
+        </tr>-->
+        <tr>
+          <td><img src="images/pic6.jpg" width="214" height="2" /></td>
+        </tr>
+        <tr>
+          <td height="40" align="center" background="images/main_left_bg.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="24%" align="center"><img src="images/pic13.jpg" width="12" height="14" /></td>
+              <td width="76%" align="left" class="balck12px001" onclick="redirect(5)"><a href="#">统计分析</a></td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td><img src="images/pic6.jpg" width="214" height="2" /></td>
+        </tr>
+        <tr>
+          <td height="40" align="center" background="images/main_left_bg.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="24%" align="center"><img src="images/pic14.jpg" width="16" height="16" /></td>
+              <td width="76%" align="left" class="balck12px001" onclick="redirect(6)"><a href="#">系统管理</a></td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td><img src="images/pic6.jpg" width="214" height="2" /></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="main_middle" id="main_middle"><a href="#"><img src="images/main_middle1.jpg" border="0"/></a></div>
+  
+  <div class="main_right open">
+  <iframe src="map.html" frameborder="0" width="100%" id="map"></iframe>
+  <div class="right1">
+   <div class="main_right_top"><table width="234" border="0" cellspacing="0" cellpadding="0">
+
+</table></div>
+   
+   </div>
+   <span class="point"></span>
+   <div class="pointBox"><img src="images/pic5.jpg" alt="" /><span class="close"></span></div>
+  </div>
+ </div>
+
+ <div id="win" style="display:none;"><img src="images/pic5.jpg" /></div>
+</body>
+<script type="text/javascript">
+    function redirect(condition) {
+        switch (condition) {
+            case 38: window.location.href = "Info_show.aspx?ClassId=38"; break;
+            case 39: window.location.href = "Info_show.aspx?ClassId=39"; break;
+            case 40: window.location.href = "Info_show.aspx?ClassId=40"; break;
+            case 41: window.location.href = "Info_show.aspx?ClassId=41"; break;
+            case 5: window.location.href = "../Admin/NewsManage/Index.aspx"; break;
+            case 6: window.location.href = "../Admin/Login.aspx"; break;
+            default: alert('error'); break;
+        }
+        
+    }
+</script>
+</html>

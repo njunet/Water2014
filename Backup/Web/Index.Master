@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Index.master.cs" Inherits="Maticsoft.Web.Index" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>江苏技术师范学院科技产业处</title>
+    <link href="Index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function switch_c(div_id,a,b){
+for(var i=1; i <=b;i++ ){
+if (i==a){document.getElementById(div_id+i).className="td_border_1";document.getElementById(div_id+"c_"+i).style.display="block"}
+else{document.getElementById(div_id+i).className="td_border_2";document.getElementById(div_id+"c_"+i).style.display="none"}
+}}
+
+function switch_d(div_id,a,b){
+for(var i=1; i <=b;i++ ){
+if (i==a){document.getElementById(div_id+i).className="td_border_1";document.getElementById(div_id+"d_"+i).style.display="block"}
+else{document.getElementById(div_id+i).className="td_border_2";document.getElementById(div_id+"d_"+i).style.display="none"}
+}}
+</script>
+</head>
+<body>
+
+<div id="head">
+<div class="logo"><img src="images/top1.jpg" />
+  <div class="nav">
+    <div align="center"><a href="http://www.jstu.edu.cn" target="_blank">学校主页</a> | <a href="index.aspx" >科技首页</a> | <a href="main.aspx?classid=1" >科技动态</a> | <a href="main.aspx?classid=2" >科技产业</a> | <a href="main.aspx?classid=3" >产学研合作</a> | <a href="main.aspx?classid=4" >科技简报</a> | <a href="main.aspx?classid=5" >表格下载</a> |<a href="main.aspx?classid=6" > 办事指南</a> | <a href="main.aspx?classid=7">政策制度</a> | <a href="main.aspx?classid=8" >组织机构</a> | <a href="" target="_blank">在线留言 </a></div>
+  </div>
+</div>
+</div>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+    
+<table width="990" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" id="footer">
+  <tr>
+    <td style="width: 10px">&nbsp;</td>
+    <td height="90" background="images/footer_bj.jpg"><div align="center">
+      <div align="center">版权所有 © 江苏技术师范学院 &nbsp; 苏ICP备<a href="http://www.miibeian.gov.cn/">05071372</a>号   　最佳浏览分辨率：1024*768<br />
+        技术支持：江苏技术师范学院科技处<a href="http://www.sudytech.com" target="_blank"></a></div>
+    </div></td>
+    <td width="10">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>
