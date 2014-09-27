@@ -14,6 +14,7 @@
     <AssemblyName>Water125</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -2640,6 +2641,10 @@
     <Content Include="Daily_Discharge_Amount_new.aspx" />
     <Content Include="dataquery_HIS_MEASURAND_Data.aspx" />
     <Content Include="dataquery_HIS_MEASURAND_DischargeAmount_Day.aspx" />
+    <Content Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION.aspx" />
+    <Content Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Add.aspx" />
+    <Content Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Delete.aspx" />
+    <Content Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Modify.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\1212312312.png" />
     <Content Include="images\back.jpg" />
@@ -3452,6 +3457,34 @@
     </Compile>
     <Compile Include="dataquery_HIS_MEASURAND_DischargeAmount_Day.aspx.designer.cs">
       <DependentUpon>dataquery_HIS_MEASURAND_DischargeAmount_Day.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION.aspx.cs">
+      <DependentUpon>dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION.aspx.designer.cs">
+      <DependentUpon>dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Add.aspx.cs">
+      <DependentUpon>dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Add.aspx.designer.cs">
+      <DependentUpon>dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Delete.aspx.cs">
+      <DependentUpon>dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Delete.aspx.designer.cs">
+      <DependentUpon>dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Delete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Modify.aspx.cs">
+      <DependentUpon>dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Modify.aspx.designer.cs">
+      <DependentUpon>dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Modify.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -103,6 +103,7 @@
     <Compile Include="HIS_MEASURAND_Data.cs" />
     <Compile Include="HIS_MEASURAND_DischargeAmount_Day.cs" />
     <Compile Include="HIS_MEASURAND_DischargeAmount_Month.cs" />
+    <Compile Include="HIS_MEASURAND_PERFORMENCE_EVALUATION.cs" />
     <Compile Include="HIS_MEASURAND_POINT.cs" />
     <Compile Include="Images.cs" />
     <Compile Include="ImgClass.cs" />
