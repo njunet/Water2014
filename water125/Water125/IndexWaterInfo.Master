@@ -101,6 +101,23 @@ body {
               <td height="30" align="center"><img src="images/pic15.jpg" width="10" height="10" /></td>
               <td align="left" class="balck12px001"><a href="Monthly_Average_Flow_new.aspx">月均流量图</a></td>
             </tr>
+          </table></td>
+        </tr>
+
+        <tr>
+          <td><img src="images/pic6.jpg" width="214" height="2" /></td>
+        </tr>
+        <tr>
+          <td height="41" align="center" background="images/pic7.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="24%" align="center"><img src="images/pic10.jpg" width="10" height="14" /></td>
+              <td width="76%" align="left" class="balck12px001" onclick='elementDisplay(2)' ><span style="cursor:pointer">减排动态评估</span></td>
+            </tr> 
+          </table></td>
+        </tr>
+        <tr id="jpdt" style="display:none">
+          <td  height="70" align="center" background="images/pic8.jpg"><table width="80%" border="0" cellspacing="0" cellpadding="0">           
+            
             <tr>
               <td height="30" align="center"><img src="images/pic15.jpg" width="10" height="10" /></td>
               <td align="left" class="balck12px001"><a href="MEASURAND_PREDICT_SECTION_2011.aspx">11年排放量图</a></td>
@@ -113,32 +130,13 @@ body {
               <td height="30" align="center"><img src="images/pic15.jpg" width="10" height="10" /></td>
               <td align="left" class="balck12px001"><a href="MEASURAND_PREDICT_SECTION_2013.aspx">13年排放量图</a></td>
             </tr>
-          </table></td>
-        </tr>
-
-        <tr>
-          <td><img src="images/pic6.jpg" width="214" height="2" /></td>
-        </tr>
-        <tr>
-          <td height="41" align="center" background="images/pic7.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="24%" align="center"><img src="images/pic10.jpg" width="10" height="14" /></td>
-              <td width="76%" align="left" class="balck12px001"><%--<a href="Info_show.aspx?ClassId=39">--%>减排动态评估</a></td>
-            </tr> 
-          </table></td>
-        </tr>
-        <!--<tr>
-          <td height="70" align="center" background="images/pic8.jpg"><table width="80%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="23%" height="30" align="center"><img src="images/pic15.jpg" width="10" height="10" /></td>
-              <td width="77%" align="left" class="balck12px001"><a href="#">交通态势时空图</a></td>
-            </tr>
             <tr>
               <td height="30" align="center"><img src="images/pic15.jpg" width="10" height="10" /></td>
-              <td align="left" class="balck12px001"><a href="#">速度流量分布图</a></td>
+              <td align="left" class="balck12px001"><a href="Main.aspx">截面地图展示</a></td>
             </tr>
+
           </table></td>
-        </tr>-->
+        </tr>
         <tr>
           <td><img src="images/pic6.jpg" width="214" height="2" /></td>
         </tr>
@@ -146,7 +144,7 @@ body {
           <td height="41" align="center" background="images/pic7.jpg"><table width="95%" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="24%" align="center"><img src="images/pic11.jpg" width="14" height="16" /></td>
-              <td width="76%" align="left" class="balck12px001"><%--<a href="Info_show.aspx?ClassId=40">--%>减排绩效评估</a></td>
+              <td width="76%" align="left" class="balck12px001"><a href="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION.aspx">减排绩效评估</a></td>
             </tr>
           </table></td>
         </tr>
@@ -263,8 +261,8 @@ body {
  <script type="text/javascript">
      function elementDisplay(condition) {
          switch (condition) {
-             case 1: document.getElementById('sumCheck').style.display = (document.getElementById('sumCheck').style.display != "none" ? "none" : ""); break; 
-             case 2:
+             case 1: document.getElementById('sumCheck').style.display = (document.getElementById('sumCheck').style.display != "none" ? "none" : ""); break;
+             case 2: document.getElementById('jpdt').style.display = (document.getElementById('jpdt').style.display != "none" ? "none" : ""); break; 
              case 3:
              case 4: document.getElementById('waterInfo').style.display = (document.getElementById('waterInfo').style.display != "none" ? "none" : ""); break;
              case 5: document.getElementById('database').style.display = (document.getElementById('database').style.display != "none" ? "none" : ""); break;

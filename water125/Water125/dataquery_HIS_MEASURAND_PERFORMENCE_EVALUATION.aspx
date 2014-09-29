@@ -11,6 +11,7 @@
                             ToolTip="快速检索" OnClick="btn_Search_Click"></asp:ImageButton>
                     </td>
                     <td height="40" align="left" style="width: 80px">
+                    <%--<button onclick="href()">添加</button>--%>
                     <a href='dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Add.aspx?'>添加</a>
                     </td>
                     
@@ -37,4 +38,11 @@
                     </td>
                 </tr>
             </table>  
+<script type="text/javascript" language="javascript">
+    function href() {
+        //window.location.href = "dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Add.aspx";
+        window.open("dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Add.aspx");
+//        window.location.href = "Main.aspx";
+    }
+</script>
 </asp:Content>

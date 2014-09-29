@@ -3486,6 +3486,9 @@
     <Compile Include="dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Modify.aspx.designer.cs">
       <DependentUpon>dataquery_HIS_MEASURAND_PERFORMENCE_EVALUATION_Modify.aspx</DependentUpon>
     </Compile>
+    <Compile Include="getLatestStationWaterInfo.ashx.cs">
+      <DependentUpon>getLatestStationWaterInfo.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3849,6 +3852,7 @@
     <None Include="CuteSoft_Client\CuteEditor\Themes\Office2003_BlueTheme\Images\Thumbs.db" />
     <None Include="CuteSoft_Client\CuteEditor\Themes\OfficeXp\Images\Thumbs.db" />
     <Content Include="CuteSoft_Client\CuteEditor\Web.config" />
+    <Content Include="getLatestStationWaterInfo.ashx" />
     <None Include="My97DatePicker\WdatePicker.js.bak" />
     <Content Include="IndexWaterInfo.Master" />
   </ItemGroup>
