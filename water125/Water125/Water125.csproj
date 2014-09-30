@@ -2744,7 +2744,8 @@
     <Content Include="My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
     <Content Include="My97DatePicker\开发包\skin\whyGreen\img.gif" />
     <Content Include="News.aspx" />
-    <Content Include="tiandiMap.aspx" />
+    <Content Include="tiandiMap_section.aspx" />
+    <Content Include="tiandiMap_station.aspx" />
     <Content Include="upload\affix\635236731156309654.jpg" />
     <Content Include="upload\affix\635236732704648214.jpg" />
     <Content Include="upload\affix\635236732839645935.jpg" />
@@ -2771,6 +2772,7 @@
     <Content Include="dataquery_HIS_MEASURAND_DischargeAmount_Month.aspx" />
     <Content Include="dataquery_HIS_MEASURAND_AverageFlow_Month.aspx" />
     <Content Include="Main.aspx" />
+    <Content Include="Main_zp.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Accounts\Add.aspx.cs">
@@ -3591,12 +3593,19 @@
     <Compile Include="IndexWaterInfo.Master.designer.cs">
       <DependentUpon>IndexWaterInfo.Master</DependentUpon>
     </Compile>
-    <Compile Include="tiandiMap.aspx.cs">
-      <DependentUpon>tiandiMap.aspx</DependentUpon>
+    <Compile Include="tiandiMap_section.aspx.cs">
+      <DependentUpon>tiandiMap_section.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="tiandiMap.aspx.designer.cs">
-      <DependentUpon>tiandiMap.aspx</DependentUpon>
+    <Compile Include="tiandiMap_section.aspx.designer.cs">
+      <DependentUpon>tiandiMap_section.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tiandiMap_station.aspx.cs">
+      <DependentUpon>tiandiMap_station.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tiandiMap_station.aspx.designer.cs">
+      <DependentUpon>tiandiMap_station.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -3629,6 +3638,13 @@
     </Compile>
     <Compile Include="Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main_zp.aspx.cs">
+      <DependentUpon>Main_zp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main_zp.aspx.designer.cs">
+      <DependentUpon>Main_zp.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
