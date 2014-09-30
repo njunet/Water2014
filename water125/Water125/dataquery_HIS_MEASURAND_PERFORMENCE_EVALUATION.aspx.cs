@@ -19,15 +19,15 @@ namespace Water125
         Maticsoft.BLL.HIS_MEASURAND_PERFORMENCE_EVALUATION bll = new Maticsoft.BLL.HIS_MEASURAND_PERFORMENCE_EVALUATION();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!Page.IsPostBack)
-            //{
+            if (!Page.IsPostBack)
+            {
                // gridView.BorderColor = ColorTranslator.FromHtml(Application[Session["Style"].ToString() + "xtable_bordercolorlight"].ToString());
                 //gridView.HeaderStyle.BackColor = ColorTranslator.FromHtml(Application[Session["Style"].ToString() + "xtable_titlebgcolor"].ToString());
                 Session["strWhereNews"] = "";
                 BindData();
                 BindDropDownList();
                
-           // }
+            }
         }
 
         #region BindData
