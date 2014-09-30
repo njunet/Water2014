@@ -10,6 +10,6 @@
 namespace Water125 {
     
     
-    public partial class tiandiMap {
+    public partial class tiandiMap_station {
     }
 }

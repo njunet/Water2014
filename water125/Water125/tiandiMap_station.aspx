@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="tiandiMap.aspx.cs" Inherits="Water125.tiandiMap" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="tiandiMap_station.aspx.cs" Inherits="Water125.tiandiMap_station" %>
 <!DOCTYPE html> 
 <html> 
 <head> 

@@ -8,7 +8,7 @@ using System.Web.Services;
 
 namespace Water125
 {
-    public partial class tiandiMap : System.Web.UI.Page
+    public partial class tiandiMap_section : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
