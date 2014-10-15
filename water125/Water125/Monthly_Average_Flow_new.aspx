@@ -1,7 +1,40 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IndexWaterInfo.Master" AutoEventWireup="true" CodeBehind="Monthly_Average_Flow_new.aspx.cs" Inherits="Water125.Monthly_Average_Flow_new" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div id="container" style="min-width: 1400px; height: 600px; margin: 0 auto"></div>
+<div id="info">
+选择站点：
+<select id="stationID" name="station" onchange="show()" > 
+
+<option value="陈东港" >陈东港</option> 
+<option value="312国道桥" >312国道桥</option> 
+<option value="漕桥">漕桥</option>
+<option value="裴家" >裴家</option> 
+<option value="黄埝桥">黄埝桥</option> 
+<option value="官渎港" >官渎港</option>
+<option value="洪巷桥" >洪巷桥</option> 
+<option value="社渎港">社渎港</option>
+<option value="殷村港" >殷村港</option> 
+<option value="梁溪河桥">梁溪河桥</option> 
+<option value="百渎港" >百渎港</option>
+<option value="大港桥" >大港桥</option> 
+<option value="乌溪港桥">乌溪港桥</option>
+<option value="小溪港">小溪港</option> 
+<option value="直湖港" >直湖港</option> 
+<option value="大浦港" >大浦港</option>  
+<option value="武进港">武进港</option>
+</select> 
+
+
+选择年份：
+<select id="yearID" name="year" onchange="show()"> 
+
+
+<option value="2014">2014</option>
+<option value="2015">2015</option>
+ 
+</select> 
+</div>
+<div id="container" style="min-width: 100%; height: 650px; margin: 0 auto"></div>
 
  <%--引入webservice,声明--%>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -10,17 +43,18 @@
     </Services>
     </asp:ScriptManager>
   
-   <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/4.0.1/highcharts.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/exporting.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <script language = "javascript" type="text/javascript">
+
 
         function Show_Charts(stationStr, yearStr) {
 
             //  调用数据
             //  这里调用了一个有输入参数的webservice,前两个为输入参数，rlt为返回值
-            Water125.WebService.AverageFlow_Month(stationStr, yearStr, function (rlt) {
+            Water125.WebService.AverageFlow_Month_mew(stationStr, yearStr, function (rlt) {
                 //在这里对返回的rlt进行处理
                 //比如直接把结果写在页面上  
                 //document.write(rlt);
@@ -50,15 +84,12 @@
                 // 画图
                 $(function () {
                     $('#container').highcharts({
-                        chart: {
-                            type: 'spline'
-                        },
+                        //                        chart: {
+                        //                            type: 'spline'
+                        //                        },
                         title: {
                             text: '月均流量'
                         },
-//                        subtitle: {
-//                            text: 'Source:HIS_MEASURAND_DischargeAmount_Month'
-//                        },
                         xAxis: {
                             type: 'datetime',
                             dateTimeLabelFormats: { // don't display the dummy year
@@ -70,6 +101,11 @@
                             title: {
                                 text: '均流量(m3/h)'
                             },
+                            //                            plotLines: [{
+                            //                                value: 0,
+                            //                                width: 1,
+                            //                                color: '#808080'
+                            //                            }],
                             min: 0
                         },
                         tooltip: {
@@ -77,6 +113,12 @@
                                 return '<b>' + this.series.name + '</b><br>' +
                            Highcharts.dateFormat('%e. %b', this.x) + ': ' + this.y + ' t';
                             }
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
                         },
                         series: [{
                             name: 'flow',
@@ -97,47 +139,16 @@
 
         //页面一载入就执行的程序段
         $(function () {
-            Show_Charts("陈东港","2014");
+            Show_Charts("陈东港", "2014");
         });  //$function () 结束
 
 
-        function show() {
+      function show() {
             var stationvar = document.getElementById("stationID").options[document.getElementById("stationID").selectedIndex].value;
             var yearvar = document.getElementById("yearID").options[document.getElementById("yearID").selectedIndex].value;
             Show_Charts(stationvar, yearvar);
         } 
        
 </script>
-选择站点：
-<select id="stationID" name="station" onchange="show()"> 
 
-<option value="陈东港" >陈东港</option> 
-<option value="321国道桥" >321国道桥</option> 
-<option value="漕桥">漕桥</option>
-<option value="裴家" >裴家</option> 
-<option value="黄埝桥">黄埝桥</option> 
-<option value="官渎港" >官渎港</option>
-<option value="洪巷桥" >洪巷桥</option> 
-<option value="社渎港">社渎港</option>
-<option value="殷村港" >殷村港</option> 
-<option value="梁溪河桥">梁溪河桥</option> 
-<option value="百渎港" >百渎港</option>
-<option value="大港桥" >大港桥</option> 
-<option value="乌溪港桥">乌溪港桥</option>
-<option value="小溪港">小溪港</option> 
-<option value="直湖港" >直湖港</option> 
-<option value="大浦港" >大浦港</option>  
-<option value="武进港">武进港</option>
-</select> 
-
-
-选择年份：
-<select id="yearID" name="year" onchange="show()"> 
- 
-
-<option value="2014">2014</option> 
-<option value="2015">2015</option>
-</select> 
-
-<asp:Button ID="buttonToTable" runat="server" OnClick="buttonToTableClick" Text="月均流量表" />   
 </asp:Content>

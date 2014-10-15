@@ -8,8 +8,9 @@
     <title></title>
 </head>
 
-<body>    
-    <div id="container" style="min-width:800px;height:400px;"></div>
+<body>   
+     
+<div id="container" style="min-width:100%;height:650px;"></div>
 
     <form id="form1" runat="server">
     <%--引入webservice,声明--%>
@@ -19,17 +20,17 @@
     </Services>
     </asp:ScriptManager>
   
-    <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/4.0.1/highcharts.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/exporting.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <script language = "javascript" type="text/javascript">
 
-        function Show_Charts(stationStr, yearStr) {
+        function Show_Charts(idStr, yearStr) {
 
             //  调用数据
             //  这里调用了一个有输入参数的webservice,前两个为输入参数，rlt为返回值
-            Water125.WebService.DischargeAmount_Month(stationStr, yearStr, function (rlt) {
+            Water125.WebService.DischargeAmount_Month(idStr, yearStr, function (rlt) {
                 //在这里对返回的rlt进行处理
                 //比如直接把结果写在页面上  
                 //document.write(rlt);
@@ -98,15 +99,15 @@
                 // 画图
                 $(function () {
                     $('#container').highcharts({
-                        chart: {
-                            type: 'spline'
-                        },
+//                        chart: {
+//                            type: 'spline'
+//                        },
                         title: {
-                            text: 'Monthly Discharge Amount'
+                            text: '月排放量'
                         },
-                        subtitle: {
-                            text: 'Source:HIS_MEASURAND_DischargeAmount_Month'
-                        },
+//                        subtitle: {
+//                            text: 'Source:HIS_MEASURAND_DischargeAmount_Month'
+//                        },
                         xAxis: {
                             type: 'datetime',
                             dateTimeLabelFormats: { // don't display the dummy year
@@ -116,8 +117,13 @@
                         },
                         yAxis: {
                             title: {
-                                text: 'Discharge Amount (t)'
+                                text: '排放量 (t)'
                             },
+//                            plotLines: [{
+//                                value: 0,
+//                                width: 1,
+//                                color: '#808080'
+//                            }],
                             min: 0
                         },
                         tooltip: {
@@ -126,21 +132,31 @@
                            Highcharts.dateFormat('%e. %b', this.x) + ': ' + this.y + ' t';
                             }
                         },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
+                        },
                         series: [{
                             name: 'CoDMn',
                             // Define the data points. All series have a dummy year of 1970/71 in order
                             // to be compared on the same x axis. Note
                             // that in JavaScript, months start at 0 for January, 1 for February etc.
-                            data: dataArray1
+                            data: dataArray1,
+                            color: '#B3EE3A'
                         }, {
                             name: 'NH3_N',
-                            data: dataArray2
+                            data: dataArray2,
+                            color: '#FF9A00'
                         }, {
                             name: 'TP',
-                            data: dataArray3
+                            data: dataArray3,
+                            color: '#525252'
                         }, {
                             name: 'TN',
-                            data: dataArray4
+                            data: dataArray4,
+                            color: '#63B8FF'
                         }]
                     });
                 }); //highcharts结束
@@ -155,22 +171,42 @@
 
         //页面一载入就执行的程序段
         $(function () {
-            //Show_Charts("陈东港","2014","7");
-        });  //$function () 结束
+            var idAndTime;
+            var result;
+            var id, time;
+            var year;
+            var URL = document.location.toString();
+            //            alert(URL);
+            if (URL.lastIndexOf("?") != -1) {
+                NameAndTime = URL.substring(URL.lastIndexOf("?") + 1, URL.length);
+                //                alert(NameAndTime);
+                result = NameAndTime.split("&");
+                id = result[0];
+                time = result[1].split("/");
+                //                alert(id);
+                //                alert(time);
+                year = time[0];
+                //                alert(year);
+                //                alert(month);
+                Show_Charts(id, year);
+            }
+            else {
+                Show_Charts("175", "2014");
+            }
+        });                //$function () 结束
 
 
         function show() {
-            var stationvar = document.getElementById("stationID").options[document.getElementById("stationID").selectedIndex].value;
+            var idvar = document.getElementById("stationID").options[document.getElementById("stationID").selectedIndex].value;
             var yearvar = document.getElementById("yearID").options[document.getElementById("yearID").selectedIndex].value;
-            Show_Charts(stationvar, yearvar);
+            Show_Charts(idvar, yearvar);
         } 
        
 </script>
-选择站点：
-<select id="stationID" name="station" onchange="show()"> 
-
+<%--选择站点：
+<select id="Select1" name="station" onchange="show()"  > 
 <option value="陈东港" >陈东港</option> 
-<option value="321国道桥" >321国道桥</option> 
+<option value="312国道桥" >312国道桥</option> 
 <option value="漕桥">漕桥</option>
 <option value="裴家" >裴家</option> 
 <option value="黄埝桥">黄埝桥</option> 
@@ -187,16 +223,13 @@
 <option value="大浦港" >大浦港</option>  
 <option value="武进港">武进港</option>
 </select> 
-
-
 选择年份：
-<select id="yearID" name="year" onchange="show()"> 
-
-<option value="2013">2013</option>
-<option value="2014">2014</option>
-<option value="2015">2015</option> 
+<select id="Select2" name="year" onchange="show()"> 
+ 
+<option value="2014">2014</option> 
+<option value="2015">2015</option>
 </select> 
-
+--%>
     </form>
 </body>
 </html>

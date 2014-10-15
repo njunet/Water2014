@@ -7,12 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Water125
 {
-    public partial class Monthly_Discharge_Amount_new : System.Web.UI.Page
+    public partial class MEASURAND_PREDICT_SECTION_2013_old : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
     }
 }
