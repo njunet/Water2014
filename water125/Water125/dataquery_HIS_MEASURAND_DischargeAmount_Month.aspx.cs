@@ -282,7 +282,9 @@ namespace Maticsoft.Web
         protected void buttonToImageClick(object sender, EventArgs e)
         {
             //string stationId = ddlStationName.DataValueField.ToString();
-            Response.Redirect("Monthly_Discharge_Amount_new.aspx");
+            string Name = this.ddlStationName.SelectedItem.Value.ToString();
+            string begindate = this.D411.Value.ToString();
+            Response.Redirect("Monthly_Discharge_Amount.aspx?" + Name + "&" + begindate);
         }
     }
 }

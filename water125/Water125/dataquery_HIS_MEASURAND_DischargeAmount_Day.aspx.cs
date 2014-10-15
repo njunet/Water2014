@@ -255,7 +255,7 @@ namespace Maticsoft.Web
         }
         #endregion
 
-         protected void BindDropDownList()
+        protected void BindDropDownList()
         {
             Maticsoft.BLL.HIS_MEASURAND_DischargeAmount_Day stationBll = new BLL.HIS_MEASURAND_DischargeAmount_Day();
             string strWhere = "";
@@ -272,7 +272,7 @@ namespace Maticsoft.Web
             ddlStationName.DataValueField = "id";//更新表格
             ddlStationName.DataBind();
             ddlStationName.Items.Insert(0, new ListItem("请选择", "0"));
-       }
+        }
         protected void ddlOnSelectedIndexChanged(object sender, EventArgs e)
         {
             ddlStationName.DataValueField = ddlStationName.SelectedValue;
@@ -282,7 +282,12 @@ namespace Maticsoft.Web
         protected void buttonToImageClick(object sender, EventArgs e)
         {
             //string stationId = ddlStationName.DataValueField.ToString();
-            Response.Redirect("Daily_Discharge_Amount_new.aspx");
+            string Name = this.ddlStationName.SelectedItem.Value.ToString();
+            //string Name = this.ddlStationName.SelectedItem.Value.ToString();
+            //string Name = this.ddlStationName.Text.Trim();
+            string begindate = this.D411.Value.ToString();
+            Response.Redirect("Daily_Discharge_Amount.aspx?"+Name+"&"+begindate);
+            //location.href = "Daily_Discharge_Amount.aspx?" ;
         }
     }
 }

@@ -14,10 +14,10 @@ namespace Water125
 
         }
 
-        protected void buttonToTableClick(object sender, EventArgs e)
-        {
-            //string stationId = ddlStationName.DataValueField.ToString();
-            Response.Redirect("dataquery_HIS_MEASURAND_DischargeAmount_Day.aspx");
-        }
+        //protected void buttonToTableClick(object sender, EventArgs e)
+        //{
+        //    //string stationId = ddlStationName.DataValueField.ToString();
+        //    Response.Redirect("dataquery_HIS_MEASURAND_DischargeAmount_Day.aspx");
+        //}
     }
 }

@@ -135,7 +135,7 @@ namespace Maticsoft.Web.waterInfo
         {
             //string stationId = this.txtKey.Text.Trim();
             //string stationId = this.ddlKey1.SelectedItem.Value.ToString();
-            string Name = this.ddlStationName.SelectedItem.Value.ToString();
+            string Name = this.ddlRiverName.SelectedItem.Value.ToString();
 
             string strsql = "";
 
@@ -147,9 +147,9 @@ namespace Maticsoft.Web.waterInfo
             //{
             //    strsql += " and (ParentId=0)";
             //}
-            if (this.ddlStationName.SelectedIndex > 0)
+            if (this.ddlRiverName.SelectedIndex > 0)
             {
-                strsql += " and (id=" + this.ddlStationName.DataValueField + ")";
+                strsql += " and (id=" + this.ddlRiverName.DataValueField + ")";
             }
             else
             {
@@ -259,15 +259,15 @@ namespace Maticsoft.Web.waterInfo
             DataSet stationDs = stationBll.GetAllList();
             DataTable stationDt = stationDs.Tables[0];//读取数据库站点信息表
 
-            ddlStationName.DataSource = stationDt;//下拉菜单绑定数据源
-            ddlStationName.DataTextField = "station_name";
-            ddlStationName.DataValueField = "id";
-            ddlStationName.DataBind();
-            ddlStationName.Items.Insert(0, new ListItem("请选择", "0"));
+            ddlRiverName.DataSource = stationDt;//下拉菜单绑定数据源
+            ddlRiverName.DataTextField = "river_name";
+            ddlRiverName.DataValueField = "id";
+            ddlRiverName.DataBind();
+            ddlRiverName.Items.Insert(0, new ListItem("请选择", "0"));
         }
         protected void ddlOnSelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlStationName.DataValueField = ddlStationName.SelectedValue;
+            ddlRiverName.DataValueField = ddlRiverName.SelectedValue;
 
         }
     }

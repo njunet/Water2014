@@ -9,7 +9,8 @@
 </head>
 
 <body>    
-    <div id="container" style="min-width:800px;height:400px;"></div>
+
+    <div id="container" style="min-width:100%;height:650px;"></div>
 
     <form id="form1" runat="server">
     <%--引入webservice,声明--%>
@@ -19,19 +20,20 @@
     </Services>
     </asp:ScriptManager>
   
-    <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/4.0.1/highcharts.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/exporting.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <script language = "javascript" type="text/javascript">
-        function Show_Charts(stationStr, yearStr, monthStr) {
-
+        function Show_Charts(idStr, yearStr, monthStr) {
+//            alert("test");
             //  调用数据
             //  这里调用了一个有输入参数的webservice,前两个为输入参数，rlt为返回值
-            Water125.WebService.DischargeAmount_Day(stationStr, yearStr, monthStr, function (rlt) {
+            Water125.WebService.DischargeAmount_Day(idStr, yearStr, monthStr, function (rlt) {
                 //在这里对返回的rlt进行处理
                 //比如直接把结果写在页面上  // document.write(rlt);
                 //或将字符串打散处理
+//                alert("test");
                 if (rlt == "null")
                     alert("对应时段无数据");
                 var DischargeAmount = rlt.split("#");
@@ -99,15 +101,15 @@
                 // 画图
                 $(function () {
                     $('#container').highcharts({
-                        chart: {
-                            type: 'spline'
-                        },
+                        //                        chart: {
+                        //                            type: 'spline'
+                        //                        },
                         title: {
-                            text: 'Daily Discharge Amount'
+                            text: '日排放量'
                         },
-                        subtitle: {
-                            text: 'Source:HIS_MEASURAND_DischargeAmount_Day'
-                        },
+                        //                        subtitle: {
+                        //                            text: 'Source:HIS_MEASURAND_DischargeAmount_Day'
+                        //                        },
                         xAxis: {
                             type: 'datetime',
                             dateTimeLabelFormats: { // don't display the dummy year
@@ -117,8 +119,13 @@
                         },
                         yAxis: {
                             title: {
-                                text: 'Discharge Amount (t)'
+                                text: '排放量(t)'
                             },
+                            //                            plotLines: [{
+                            //                                value: 0,
+                            //                                width: 1,
+                            //                                color: '#808080'
+                            //                            }],
                             min: 0
                         },
                         tooltip: {
@@ -127,21 +134,31 @@
                            Highcharts.dateFormat('%e. %b', this.x) + ': ' + this.y + ' t';
                             }
                         },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
+                        },
                         series: [{
                             name: 'CoDMn',
                             // Define the data points. All series have a dummy year of 1970/71 in order
                             // to be compared on the same x axis. Note
                             // that in JavaScript, months start at 0 for January, 1 for February etc.
-                            data: dataArray1
+                            data: dataArray1,
+                            color: '#B3EE3A'
                         }, {
                             name: 'NH3_N',
-                            data: dataArray2
+                            data: dataArray2,
+                            color: '#FF9A00'
                         }, {
                             name: 'TP',
-                            data: dataArray3
+                            data: dataArray3,
+                            color: '#525252'
                         }, {
                             name: 'TN',
-                            data: dataArray4
+                            data: dataArray4,
+                            color: '#63B8FF'
                         }]
                     });
                 }); //highcharts结束
@@ -151,29 +168,53 @@
         function () {
             //当调用失败时执行下面的函数
             alert('无数据！');
-        });  //webservice结束
+        });   //webservice结束
 
         } //show_charts结束
 
-        //页面一载入就执行的程序段
+//        页面一载入就执行的程序段
+//        $(function () {
+//            Show_Charts("陈东港", "2014", "1");
+//        });  //$function () 结束
         $(function () {
-            //Show_Charts("陈东港","2014","7");
-        });  //$function () 结束
-
+            var idAndTime;
+            var result;
+            var id, time;
+            var year, month;
+            var URL = document.location.toString();
+            //            alert(URL);
+            if (URL.lastIndexOf("?") != -1) {
+                NameAndTime = URL.substring(URL.lastIndexOf("?") + 1, URL.length);
+//                alert(NameAndTime);
+                result = NameAndTime.split("&");
+                id = result[0];                
+                time = result[1].split("/");
+//                alert(id);
+                //                alert(time);
+                year = time[0];
+                month = time[1];
+                //                alert(year);
+                //                alert(month);
+                Show_Charts(id, year, month);
+            }
+            else {
+                Show_Charts("175", "2014", "1");
+            }
+        });                //$function () 结束
 
         function show() {
-            var stationvar = document.getElementById("stationID").options[document.getElementById("stationID").selectedIndex].value;
+            var idvar = document.getElementById("stationID").options[document.getElementById("stationID").selectedIndex].value;
             var yearvar = document.getElementById("yearID").options[document.getElementById("yearID").selectedIndex].value;
             var monthvar = document.getElementById("monthID").options[document.getElementById("monthID").selectedIndex].value;
-            Show_Charts(stationvar, yearvar, monthvar);
+            Show_Charts(idvar, yearvar, monthvar);            
         } 
        
 </script>
-选择站点：
-<select id="stationID" name="station" onchange="show()"> 
+<%--选择站点：
+<select id="stationID" name="station" onchange="show()" > 
 
 <option value="陈东港" >陈东港</option> 
-<option value="321国道桥" >321国道桥</option> 
+<option value="312国道桥" >312国道桥</option> 
 <option value="漕桥">漕桥</option>
 <option value="裴家" >裴家</option> 
 <option value="黄埝桥">黄埝桥</option> 
@@ -189,20 +230,16 @@
 <option value="直湖港" >直湖港</option> 
 <option value="大浦港" >大浦港</option>  
 <option value="武进港">武进港</option>
-</select> 
+</select> --%>
 
-选择年份：
-<select id="yearID" name="year" onchange="show()"> 
-
-<option value="2013">2013</option>
-<option value="2014">2014</option>
-<option value="2015">2015</option>
+<%--选择年份：
+<select id="Select2" name="year" onchange="show()"> 
  
+<option value="2014">2014</option> 
+<option value="2015">2015</option>
 </select> 
-
-
 选择月份：
-<select id="monthID" name="month" onchange="show()"> 
+<select id="Select3" name="month" onchange="show()"> 
 
 <option value="01">01</option> 
 <option value="02">02</option>
@@ -216,7 +253,7 @@
 <option value="10">10</option>
 <option value="11">11</option> 
 <option value="12">12</option>
-</select> 
+</select> --%>
  </form>
 </body>
 </html>

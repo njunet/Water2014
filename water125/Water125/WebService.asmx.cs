@@ -29,7 +29,49 @@ namespace Water125
         }
 
         [WebMethod]
-        public string DischargeAmount_Day(String station_name, int year, int month)
+        public string DischargeAmount_Day(int id, int year, int month)
+        {
+            string timestr = "'" + year + "/" + month + "/1'";
+            string wherestr = "id ='" + id + "' and datediff(month,date," + timestr + ")=0";
+            Maticsoft.BLL.HIS_MEASURAND_DischargeAmount_Day Bll = new Maticsoft.BLL.HIS_MEASURAND_DischargeAmount_Day();
+            DataSet dataset = Bll.GetList(1000, wherestr, "date");
+            DataTable dtl = dataset.Tables[0];
+            int rowcount = dtl.Rows.Count;
+            if (rowcount == 0)
+            {
+                return "null";
+            }
+            DataRow col = dtl.Rows[0];
+            String DischargeAmountstr = col["id"].ToString();
+            DischargeAmountstr += "#CODMn";
+            for (int i = 0; i < rowcount; i++)
+            {
+                col = dtl.Rows[i];
+                DischargeAmountstr += ";" + col["date"].ToString() + "," + col["CODMn"].ToString();
+            }
+            DischargeAmountstr += "#NH3_N";
+            for (int i = 0; i < rowcount; i++)
+            {
+                col = dtl.Rows[i];
+                DischargeAmountstr += ";" + col["date"].ToString() + "," + col["NH3_N"].ToString();
+            }
+            DischargeAmountstr += "#TP";
+            for (int i = 0; i < rowcount; i++)
+            {
+                col = dtl.Rows[i];
+                DischargeAmountstr += ";" + col["date"].ToString() + "," + col["TP"].ToString();
+            }
+            DischargeAmountstr += "#TN";
+            for (int i = 0; i < rowcount; i++)
+            {
+                col = dtl.Rows[i];
+                DischargeAmountstr += ";" + col["date"].ToString() + "," + col["TN"].ToString();
+            }
+            return DischargeAmountstr;
+        }
+
+        [WebMethod]
+        public string DischargeAmount_Day_new(String station_name, int year, int month)
         {
             string timestr = "'" + year + "/" + month + "/1'";
             string wherestr = "station_name ='" + station_name + "' and datediff(month,date," + timestr + ")=0";
@@ -70,9 +112,50 @@ namespace Water125
             return DischargeAmountstr;
         }
 
+        [WebMethod]
+        public string DischargeAmount_Month(int id, int year)
+        {
+            string yearstr = "'%" + year + "%'";
+            string wherestr = "id ='" + id + "' and YYYY_MM like " + yearstr;
+            Maticsoft.BLL.HIS_MEASURAND_DischargeAmount_Month Bll = new Maticsoft.BLL.HIS_MEASURAND_DischargeAmount_Month();
+            DataSet dataset = Bll.GetList(1000, wherestr, "YYYY_MM");
+            DataTable dtl = dataset.Tables[0];
+            int rowcount = dtl.Rows.Count;
+            if (rowcount == 0)
+            {
+                return "null";
+            }
+            DataRow col = dtl.Rows[0];
+            String DischargeAmountstr = col["id"].ToString();
+            DischargeAmountstr += "#CODMn";
+            for (int i = 0; i < rowcount; i++)
+            {
+                col = dtl.Rows[i];
+                DischargeAmountstr += ";" + col["YYYY_MM"].ToString() + "," + col["CODMn"].ToString();
+            }
+            DischargeAmountstr += "#NH3_N";
+            for (int i = 0; i < rowcount; i++)
+            {
+                col = dtl.Rows[i];
+                DischargeAmountstr += ";" + col["YYYY_MM"].ToString() + "," + col["NH3_N"].ToString();
+            }
+            DischargeAmountstr += "#TP";
+            for (int i = 0; i < rowcount; i++)
+            {
+                col = dtl.Rows[i];
+                DischargeAmountstr += ";" + col["YYYY_MM"].ToString() + "," + col["TP"].ToString();
+            }
+            DischargeAmountstr += "#TN";
+            for (int i = 0; i < rowcount; i++)
+            {
+                col = dtl.Rows[i];
+                DischargeAmountstr += ";" + col["YYYY_MM"].ToString() + "," + col["TN"].ToString();
+            }
+            return DischargeAmountstr;
+        }
 
         [WebMethod]
-        public string DischargeAmount_Month(String station_name, int year)
+        public string DischargeAmount_Month_new(String station_name, int year)
         {
             string yearstr = "'%" + year + "%'";
             string wherestr = "station_name ='" + station_name + "' and YYYY_MM like " + yearstr;
@@ -114,7 +197,32 @@ namespace Water125
         }
 
         [WebMethod]
-        public string AverageFlow_Month(String station_name, int year)
+        public string AverageFlow_Month(int id, int year)
+        {
+            string yearstr = "'%" + year + "%'";
+            string wherestr = "id ='" + id + "' and YYYY_MM like " + yearstr;
+            Maticsoft.BLL.HIS_MEASURAND_DischargeAmount_Month Bll = new Maticsoft.BLL.HIS_MEASURAND_DischargeAmount_Month();
+            DataSet dataset = Bll.GetList(1000, wherestr, "YYYY_MM");
+            DataTable dtl = dataset.Tables[0];
+            int rowcount = dtl.Rows.Count;
+            if (rowcount == 0)
+            {
+                return "null";
+            }
+            DataRow col = dtl.Rows[0];
+            String DischargeAmountstr = col["id"].ToString();
+            DischargeAmountstr += "#flow";
+            for (int i = 0; i < rowcount; i++)
+            {
+                col = dtl.Rows[i];
+                DischargeAmountstr += ";" + col["YYYY_MM"].ToString() + "," + col["flow"].ToString();
+            }
+
+            return DischargeAmountstr;
+        }
+
+        [WebMethod]
+        public string AverageFlow_Month_mew(String station_name, int year)
         {
             string yearstr = "'%" + year + "%'";
             string wherestr = "station_name ='" + station_name + "' and YYYY_MM like " + yearstr;

@@ -1,14 +1,14 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/IndexWaterInfo.Master" AutoEventWireup="true" CodeBehind="dataquery_HIS_MEASURAND_DischargeAmount_Month.aspx.cs" Inherits="Maticsoft.Web.dataquery_HIS_MEASURAND_DischargeAmount_Month" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table cellspacing="0" cellpadding="5" width="1200" border="0">
+    <table cellspacing="0" cellpadding="5" width="100%" border="0">
             <%--<table cellspacing="0" cellpadding="5" width="700" border="0">--%>
                 <tr>
-                    <td height="40" align="left">
+                    <td height="15%" align="left">
                         &nbsp;&nbsp;&nbsp; 快速查询：
                         站点名称：
                         <asp:DropDownList ID="ddlStationName" runat="server" Width="10%" ToolTip="关键字" OnSelectedIndexChanged="ddlOnSelectedIndexChanged"></asp:DropDownList>&nbsp;                              
-
+                        &nbsp;&nbsp;
                       <%--  <asp:Label ID="Label2" runat="server">日期：</asp:Label>
                            <asp:TextBox ID="txtdate" runat="server" BorderStyle="Groove" Width="130px" 
                             ToolTip="日期格式:YYYY-MM-DD，双击选择日期" 
@@ -17,22 +17,24 @@
 
                         <asp:Label ID="Label2" runat="server">起始时间：</asp:Label>
                         <input id="D411" class="Wdate" runat="server" type="text" onclick="WdatePicker({dateFmt:'yyyy/M'})"/> 
-
+                        &nbsp;&nbsp;
                         <asp:Label ID="Label3" runat="server">终止时间：</asp:Label>
                         <input id="D412" class="Wdate" runat="server" type="text" onclick="WdatePicker({dateFmt:'yyyy/M'})"/>
-                        
+                        &nbsp;&nbsp;
                         <asp:ImageButton ID="btn_Search" runat="server" ImageUrl="Admin/images/button_search.GIF"
                             ToolTip="快速检索" OnClick="btn_Search_Click"></asp:ImageButton>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Button ID="buttonToImage" runat="server" OnClick="buttonToImageClick" Text="月排放量图" />    
                     </td>
                 </tr>
             </table>
             
-            <table cellspacing="0" cellpadding="5" width="1200" border="0">                
+            <table cellspacing="0" cellpadding="5" width="100%" border="0">                
                 <tr>
-                <td align="left">○页次：<asp:Label ID="lblCurrentPage" runat="server" ForeColor="#e78a29"></asp:Label>页/<asp:Label ID="lblPageCount"
+                <td height="15%" align="left">○页次：<asp:Label ID="lblCurrentPage" runat="server" ForeColor="#e78a29"></asp:Label>页/<asp:Label ID="lblPageCount"
                         runat="server"></asp:Label>页，共<asp:Label ID="lblRowsCount" runat="server" ForeColor="#e78a29"></asp:Label>条记录
                         </td>
-                <td align="right">
+                <td height="15%" align="right">
                 [<asp:linkbutton id="btnFirst" runat="server" OnCommand="NavigateToPage" CommandArgument="First"
 								CommandName="Pager" Text="首 页">首 页</asp:linkbutton>]
 				[<asp:linkbutton id="btnPrev" runat="server" OnCommand="NavigateToPage" CommandArgument="Prev"
@@ -44,16 +46,17 @@
                 </td>
                 </tr>
             </table>
-            <table cellspacing="0" cellpadding="5" width="1200" border="0">                
+            <table cellspacing="0" cellpadding="5" width="100%" border="0">                
                 <tr>
                     <td bgcolor='<%=Application[Session["Style"].ToString()+"xtable_bgcolor"]%>'>
                         <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False" Width="100%"
                             AllowPaging="True" AllowSorting="True" OnRowCreated="gridView_RowCreated" OnPageIndexChanging="gridView_PageIndexChanging"
-                            OnRowDataBound="gridView_RowDataBound" CellPadding="5" BorderWidth="1px" PageSize="15" OnSorting="gridView_Sorting"
+                            OnRowDataBound="gridView_RowDataBound" CellPadding="5" BorderWidth="1px" PageSize="30" OnSorting="gridView_Sorting"
                             >
                             <Columns>
-                                <asp:BoundField DataField="id" HeaderText="站点号" SortExpression="id" />  
+                                  
                                 <asp:BoundField DataField="station_name" HeaderText="站点名称" SortExpression="station_name" /> 
+                                <asp:BoundField DataField="id" HeaderText="站点号" SortExpression="id" />
                                 <asp:BoundField DataField="YYYY_MM" HeaderText="日期" SortExpression="YYYY_MM"/>        
                                 <asp:BoundField DataField="CODMn" HeaderText="高锰酸钾耗氧量(t)" SortExpression="CODMn"/>  
                                 <asp:BoundField DataField="NH3_N" HeaderText="氨氮（t）" SortExpression="NH3_N"/>
@@ -74,7 +77,7 @@
                             <PagerStyle HorizontalAlign="Right" VerticalAlign="Middle" />
                         </asp:GridView>
                         <asp:Label ID="Label1" runat="server" Visible="False" ForeColor="Red">没有数据！！</asp:Label>
-                        <asp:Button ID="buttonToImage" runat="server" OnClick="buttonToImageClick" Text="月排放量图" />                   
+                                        
                     </td>
                 </tr>
             </table>  

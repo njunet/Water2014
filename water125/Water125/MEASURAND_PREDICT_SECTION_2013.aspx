@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IndexWaterInfo.Master" AutoEventWireup="true" CodeBehind="MEASURAND_PREDICT_SECTION_2013.aspx.cs" Inherits="Water125.MEASURAND_PREDICT_SECTION_2013" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
 
-<div id="container" style="min-width: 1400px; height: 600px; margin: 0 auto"></div>
+<div id="container" style="min-width: 100%; height: 650px; margin: 0 auto"></div>
 
  <%--引入webservice,声明--%>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -10,8 +10,8 @@
     </Services>
     </asp:ScriptManager>
   
-    <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/4.0.1/highcharts.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/exporting.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <script language = "javascript" type="text/javascript">
@@ -89,9 +89,9 @@
 
                 $(function () {
                     $('#container').highcharts({
-                        chart: {
-                            type: 'spline'
-                        },
+//                        chart: {
+//                            type: 'spline'
+//                        },
                         title: {
                             text: '2013年排放量'
                         },
@@ -121,16 +121,20 @@
                             // Define the data points. All series have a dummy year of 1970/71 in order
                             // to be compared on the same x axis. Note
                             // that in JavaScript, months start at 0 for January, 1 for February etc.
-                            data: dataArray1
+                            data: dataArray1,
+                            color: '#B3EE3A'
                         }, {
                             name: 'NH3_N',
-                            data: dataArray2
+                            data: dataArray2,
+                            color: '#FF9A00'
                         }, {
                             name: 'TP',
-                            data: dataArray3
+                            data: dataArray3,
+                            color: '#525252'
                         }, {
                             name: 'TN',
-                            data: dataArray4
+                            data: dataArray4,
+                            color: '#63B8FF'
                         }]
                     }); //highcharts结束
                 }); //画图结束
@@ -220,5 +224,5 @@
 </select> 
 
 <%--<button onclick='caculate_time()' >快速搜索</button>--%>
-
+ 
 </asp:Content>

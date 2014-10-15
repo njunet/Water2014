@@ -1,15 +1,23 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IndexWaterInfo.Master" AutoEventWireup="true" CodeBehind="MEASURAND_PREDICT_SECTION_2011.aspx.cs" Inherits="Water125.MEASURAND_PREDICT_SECTION_2011" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MEASURAND_PREDICT_SECTION_2011_old.aspx.cs" Inherits="Water125.MEASURAND_PREDICT_SECTION_2011_old" %>
 
-<div id="container" style="min-width: 100%; height: 650px; margin: 0 auto"></div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
- <%--引入webservice,声明--%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+</head>
+
+<body>    
+    <div id="container" style="min-width:100%;height:650px;"></div>
+
+    <form id="form1" runat="server">
+    <%--引入webservice,声明--%>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     <Services>
     <asp:ServiceReference Path="~/WebService.asmx"/>
     </Services>
     </asp:ScriptManager>
-  
+    <script src="My97DatePicker/WdatePicker.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/exporting.js"></script>
@@ -171,11 +179,11 @@
         function caculate_time() {
             //alert("test!");
 
-            var startvar = document.getElementById("ContentPlaceHolder1_startID").value;
-            var endvar = document.getElementById("ContentPlaceHolder1_endID").value;
+            var startvar = document.getElementById("startID").value;
+            var endvar = document.getElementById("endID").value;
 
-            //        alert(document.getElementById("ContentPlaceHolder1_startID").value);
-            //        alert(document.getElementById("ContentPlaceHolder1_endID").value);
+            //      alert(document.getElementById("startID").value);
+            //      alert(document.getElementById("endID").value);
 
             var date0 = new Date("2011/1/1")
             var date1 = new Date(startvar);
@@ -201,7 +209,7 @@
 
 截面号：
 <select id="iiID" name="II" onchange="caculate_time()"> 
-<%--<select id="Select1" name="II" onchange="caculate_time()"> --%>
+
 <option value="1">1</option> 
 <option value="2">2</option>
 <option value="3">3</option> 
@@ -221,6 +229,6 @@
 <option value="17">17</option>
 </select> 
 
-<%--<button onclick='caculate_time()' >快速搜索</button>--%>
-
-</asp:Content>
+ </form>
+</body>
+</html>

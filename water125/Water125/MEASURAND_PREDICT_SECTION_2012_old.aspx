@@ -1,15 +1,23 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IndexWaterInfo.Master" AutoEventWireup="true" CodeBehind="MEASURAND_PREDICT_SECTION_2011.aspx.cs" Inherits="Water125.MEASURAND_PREDICT_SECTION_2011" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MEASURAND_PREDICT_SECTION_2012_old.aspx.cs" Inherits="Water125.MEASURAND_PREDICT_SECTION_2012_old" %>
 
-<div id="container" style="min-width: 100%; height: 650px; margin: 0 auto"></div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
- <%--引入webservice,声明--%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+</head>
+
+<body>    
+    <div id="container" style="min-width:100%;height:650px;"></div>
+
+    <form id="form1" runat="server">
+    <%--引入webservice,声明--%>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     <Services>
     <asp:ServiceReference Path="~/WebService.asmx"/>
     </Services>
     </asp:ScriptManager>
-  
+    <script src="My97DatePicker/WdatePicker.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/exporting.js"></script>
@@ -20,7 +28,7 @@
             //            alert("test1");
             //  调用数据
             //  这里调用了一个有输入参数的webservice,前3个为输入参数，rlt为返回值
-            Water125.WebService.Predict2011(startStr, endStr, iiStr, function (rlt) {
+            Water125.WebService.Predict2012(startStr, endStr, iiStr, function (rlt) {
                 //在这里对返回的rlt进行处理
                 //比如直接把结果写在页面上 
                 //            document.write(rlt);
@@ -93,7 +101,7 @@
 //                            type: 'spline'
 //                        },
                         title: {
-                            text: '2011年排放量'
+                            text: '2012年排放量'
                         },
                         xAxis: {
                             //                            type: 'datetime',
@@ -171,13 +179,11 @@
         function caculate_time() {
             //alert("test!");
 
-            var startvar = document.getElementById("ContentPlaceHolder1_startID").value;
-            var endvar = document.getElementById("ContentPlaceHolder1_endID").value;
+            var startvar = document.getElementById("startID").value;
+            var endvar = document.getElementById("endID").value;
 
-            //        alert(document.getElementById("ContentPlaceHolder1_startID").value);
-            //        alert(document.getElementById("ContentPlaceHolder1_endID").value);
 
-            var date0 = new Date("2011/1/1")
+            var date0 = new Date("2012/1/1")
             var date1 = new Date(startvar);
             var date2 = new Date(endvar);
 
@@ -194,10 +200,10 @@
 </script>
 
 <asp:Label ID="Label" runat="server">起始时间：</asp:Label>
-<input id="startID" class="Wdate" runat="server" type="text" onclick="WdatePicker({startDate:'2011-01-01',dateFmt:'yyyy/M/d'})" /> 
+<input id="startID" class="Wdate" runat="server" type="text" onclick="WdatePicker({startDate:'2012-01-01',dateFmt:'yyyy/M/d'})" /> 
 
 <asp:Label ID="Label2" runat="server">终止时间：</asp:Label>
-<input id="endID" class="Wdate" runat="server" type="text" onclick="WdatePicker({startDate:'2011-01-01',dateFmt:'yyyy/M/d'})" />
+<input id="endID" class="Wdate" runat="server" type="text" onclick="WdatePicker({startDate:'2012-01-01',dateFmt:'yyyy/M/d'})" />
 
 截面号：
 <select id="iiID" name="II" onchange="caculate_time()"> 
@@ -223,4 +229,6 @@
 
 <%--<button onclick='caculate_time()' >快速搜索</button>--%>
 
-</asp:Content>
+ </form>
+</body>
+</html>

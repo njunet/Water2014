@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IndexWaterInfo.Master" AutoEventWireup="true" CodeBehind="MEASURAND_PREDICT_SECTION_2012.aspx.cs" Inherits="Water125.MEASURAND_PREDICT_SECTION_2012" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<div id="container" style="min-width: 1400px; height: 600px; margin: 0 auto"></div>
+<div id="container" style="min-width: 100%; height: 650px; margin: 0 auto"></div>
 
  <%--引入webservice,声明--%>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -10,17 +10,17 @@
     </Services>
     </asp:ScriptManager>
   
-    <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/4.0.1/highcharts.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/exporting.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
 
     <script language = "javascript" type="text/javascript">
 
         function Show_Charts(startStr, endStr, iiStr) {
-//            alert("test1");
-        //  调用数据
-        //  这里调用了一个有输入参数的webservice,前3个为输入参数，rlt为返回值
+            //            alert("test1");
+            //  调用数据
+            //  这里调用了一个有输入参数的webservice,前3个为输入参数，rlt为返回值
             Water125.WebService.Predict2012(startStr, endStr, iiStr, function (rlt) {
                 //在这里对返回的rlt进行处理
                 //比如直接把结果写在页面上 
@@ -90,9 +90,9 @@
 
                 $(function () {
                     $('#container').highcharts({
-                        chart: {
-                            type: 'spline'
-                        },
+//                        chart: {
+//                            type: 'spline'
+//                        },
                         title: {
                             text: '2012年排放量'
                         },
@@ -122,16 +122,20 @@
                             // Define the data points. All series have a dummy year of 1970/71 in order
                             // to be compared on the same x axis. Note
                             // that in JavaScript, months start at 0 for January, 1 for February etc.
-                            data: dataArray1
+                            data: dataArray1,
+                            color: '#B3EE3A'
                         }, {
                             name: 'NH3_N',
-                            data: dataArray2
+                            data: dataArray2,
+                            color: '#FF9A00'
                         }, {
                             name: 'TP',
-                            data: dataArray3
+                            data: dataArray3,
+                            color: '#525252'
                         }, {
                             name: 'TN',
-                            data: dataArray4
+                            data: dataArray4,
+                            color: '#63B8FF'
                         }]
                     }); //highcharts结束
                 }); //画图结束
@@ -142,52 +146,52 @@
             //当调用失败时执行下面的函数
             alert('无数据！');
         });    //webservice结束
-    } //show_charts结束
+        } //show_charts结束
 
-    //页面一载入就执行的程序段
-    $(function () {
-        var iiId;
-        var URL = document.location.toString();
-        if (URL.lastIndexOf("?") != -1) {
-            iiId = URL.substring(URL.lastIndexOf("?") + 1, URL.length);
-            Show_Charts("1", "24", iiId);
+        //页面一载入就执行的程序段
+        $(function () {
+            var iiId;
+            var URL = document.location.toString();
+            if (URL.lastIndexOf("?") != -1) {
+                iiId = URL.substring(URL.lastIndexOf("?") + 1, URL.length);
+                Show_Charts("1", "24", iiId);
+            }
+            else {
+                Show_Charts("1", "24", "1");
+            }
+        });  //$function () 结束
+
+        function show(startvar, endvar) {
+            //var startvar = document.getElementById("startID").options[document.getElementById("startID").selectedIndex].value;
+            //var endvar = document.getElementById("endID").options[document.getElementById("endID").selectedIndex].value;
+            var iivar = document.getElementById("iiID").options[document.getElementById("iiID").selectedIndex].value;
+            //        alert("test");
+            Show_Charts(startvar, endvar, iivar);
         }
-        else {
-            Show_Charts("1", "24", "1");
-        }
-    });  //$function () 结束
 
-    function show(startvar, endvar) {
-        //var startvar = document.getElementById("startID").options[document.getElementById("startID").selectedIndex].value;
-        //var endvar = document.getElementById("endID").options[document.getElementById("endID").selectedIndex].value;
-        var iivar = document.getElementById("iiID").options[document.getElementById("iiID").selectedIndex].value;
-        //        alert("test");
-        Show_Charts(startvar, endvar, iivar);
-    }
+        function caculate_time() {
+            //alert("test!");
 
-    function caculate_time() {
-        //alert("test!");
+            var startvar = document.getElementById("ContentPlaceHolder1_startID").value;
+            var endvar = document.getElementById("ContentPlaceHolder1_endID").value;
 
-        var startvar = document.getElementById("ContentPlaceHolder1_startID").value;
-        var endvar = document.getElementById("ContentPlaceHolder1_endID").value;
+            //        alert(document.getElementById("ContentPlaceHolder1_startID").value);
+            //        alert(document.getElementById("ContentPlaceHolder1_endID").value);
 
-        //        alert(document.getElementById("ContentPlaceHolder1_startID").value);
-        //        alert(document.getElementById("ContentPlaceHolder1_endID").value);
+            var date0 = new Date("2012/1/1")
+            var date1 = new Date(startvar);
+            var date2 = new Date(endvar);
 
-        var date0 = new Date("2012/1/1")
-        var date1 = new Date(startvar);
-        var date2 = new Date(endvar);
+            var startTime = date1.getTime() - date0.getTime();
+            var endTime = date2.getTime() - date0.getTime();
+            //        alert(startTime);
+            var startHour = Math.floor(startTime / (1000 * 60 * 60));
+            var endHour = Math.floor(endTime / (1000 * 60 * 60));
 
-        var startTime = date1.getTime() - date0.getTime();
-        var endTime = date2.getTime() - date0.getTime();
-        //        alert(startTime);
-        var startHour = Math.floor(startTime / (1000 * 60 * 60));
-        var endHour = Math.floor(endTime / (1000 * 60 * 60));
+            //        alert(startHour);
+            show(startHour, endHour);
 
-        //        alert(startHour);
-        show(startHour, endHour);
-
-    }  
+        }  
 </script>
 <asp:Label ID="Label" runat="server">起始时间：</asp:Label>
 <input id="startID" class="Wdate" runat="server" type="text" onclick="WdatePicker({startDate:'2012-01-01',dateFmt:'yyyy/M/d'})" /> 
