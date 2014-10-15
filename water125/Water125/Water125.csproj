@@ -2745,6 +2745,8 @@
     <Content Include="My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
     <Content Include="My97DatePicker\开发包\skin\whyGreen\img.gif" />
     <Content Include="News.aspx" />
+    <Content Include="tiandiMap_section.aspx" />
+    <Content Include="tiandiMap_station.aspx" />
     <Content Include="upload\affix\635236731156309654.jpg" />
     <Content Include="upload\affix\635236732704648214.jpg" />
     <Content Include="upload\affix\635236732839645935.jpg" />
@@ -3597,6 +3599,20 @@
     </Compile>
     <Compile Include="IndexWaterInfo.Master.designer.cs">
       <DependentUpon>IndexWaterInfo.Master</DependentUpon>
+    </Compile>
+    <Compile Include="tiandiMap_section.aspx.cs">
+      <DependentUpon>tiandiMap_section.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tiandiMap_section.aspx.designer.cs">
+      <DependentUpon>tiandiMap_section.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tiandiMap_station.aspx.cs">
+      <DependentUpon>tiandiMap_station.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tiandiMap_station.aspx.designer.cs">
+      <DependentUpon>tiandiMap_station.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
