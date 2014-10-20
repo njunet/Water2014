@@ -6,13 +6,13 @@
 <title>十二五水专项地图</title> 
 <script language="javascript" src="http://api.tianditu.com/js/maps.js"></script> 
 <script type="text/javascript" language="javascript">
-    var map, zoom = 12, marker,markerTool,infoWindow;
+    var map, zoom = 11, marker,markerTool,infoWindow;
     var listener = null;
     function onLoad() {
         //初始化地图对象 
         map = new TMap("mapDiv");
         //设置显示地图的中心点和级别 
-        map.centerAndZoom(new TLngLat(119.958095, 31.468101), zoom);
+        map.centerAndZoom(new TLngLat(120.1634, 31.34121), zoom);
         //允许鼠标双击放大地图 
         map.enableHandleMouseScroll();
 
